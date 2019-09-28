@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import cyan from "@material-ui/core/colors/cyan";
+import lightBlue from "@material-ui/core/colors/lightBlue";
 import Button from "@material-ui/core/Button";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
@@ -11,22 +11,24 @@ import { ShippingAddress } from "./ShippingAddress";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 2,
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center"
+    textAlign: "center",
+    flexGrow: 1,
   },
   cyan: {
-    backgroundColor: cyan[100]
+    backgroundColor: lightBlue[600]
   },
   button: {
     padding: "12%",
     borderRadius: "60%",
-    left: "40%"
+    left: "40%",
+    color: lightBlue[600]
   },
   flexgrid: {
-    backgroundColor: cyan[100],
+    backgroundColor: lightBlue[600],
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -79,7 +81,7 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={2}>
+      <Grid container spacing={12}>
         <Grid item xs={5} className={classes.cyan}>
           <ShippingAddress
             default={setDefault}
@@ -90,14 +92,14 @@ export default function CenteredGrid() {
         <Grid item xs={1} className={classes.flexgrid}>
           <Button
             variant="contained"
-            color="secondary"
+            color="default"
             className={classes.button}
             onClick={validateFields}
           >
             Submit
           </Button>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           <BillingAddress
             default={setDefault}
             validate={option.validate}

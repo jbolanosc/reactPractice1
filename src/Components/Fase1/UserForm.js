@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import lightBlue from "@material-ui/core/colors/lightBlue";
+
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
@@ -14,9 +16,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
+  button:{
+    color: lightBlue[600]
+  },
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   dense: {
     marginTop: theme.spacing(2)
@@ -258,7 +263,7 @@ export default function SimpleContainer() {
           />
           <Button
             variant="contained"
-            color="secondary"
+            color="default"
             className={classes.button}
             onClick={validateFields}
           >
