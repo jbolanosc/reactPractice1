@@ -68,6 +68,34 @@ export const ShippingAddress = props => {
     setFormData({ ...formData, [name]: event.target.value });
   };
 
+  const resetErrors = () => {
+    setErrors({
+      firstname: false,
+      lastname: false,
+      email: false,
+      address: false,
+      address2: false,
+      state: false,
+      city: false,
+      zipcode: false,
+      country: false
+    });
+  };
+
+  const resetForm = () => {
+    setFormData({
+      firstname: "",
+      lastname: "",
+      email: "",
+      address: "",
+      address2: "",
+      state: "",
+      city: "",
+      zipcode: "",
+      country: "United States"
+    });
+  };
+
   const validateFields = () => {
     let error = "";
     let errorObj = {};
@@ -78,10 +106,16 @@ export const ShippingAddress = props => {
         error = true;
       } else if (errors[item] === true) {
         errorObj[item] = false;
+        error = false;
       }
     }
-    setErrors(errorObj);
 
+    if (error === false) {
+      resetForm();
+      resetErrors();
+    } else {
+      setErrors(errorObj);
+    }
     props.default(error);
   };
 

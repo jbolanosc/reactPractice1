@@ -11,15 +11,15 @@ import { ShippingAddress } from "./ShippingAddress";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 2,
+    flexGrow: 3
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: "1em",
     textAlign: "center",
     flexGrow: 1,
   },
   cyan: {
-    backgroundColor: lightBlue[600]
+    Color: lightBlue[600]
   },
   button: {
     padding: "12%",
@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     color: lightBlue[600]
   },
   flexgrid: {
-    backgroundColor: lightBlue[600],
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -52,6 +51,7 @@ export default function CenteredGrid() {
     setOption({
       validate: false
     });
+    console.log(err);
     if (err === true) {
       Toastify({
         text: "All fields are required",
@@ -64,7 +64,7 @@ export default function CenteredGrid() {
         className: "info",
         stopOnFocus: true // Prevents dismissing of toast on hover
       }).showToast();
-    } else  if(err === false){
+    } else  if(err !== true){
       Toastify({
         text: "Form sent",
         duration: 5000,
@@ -81,15 +81,15 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={12}>
-        <Grid item xs={5} className={classes.cyan}>
+      <Grid container spacing={10}>
+        <Grid item xs={4} className={classes.cyan}>
           <ShippingAddress
             default={setDefault}
             validate={option.validate}
             className={classes.paper}
           />
         </Grid>
-        <Grid item xs={1} className={classes.flexgrid}>
+        <Grid item xs={2} className={classes.flexgrid}>
           <Button
             variant="contained"
             color="default"
@@ -99,7 +99,7 @@ export default function CenteredGrid() {
             Submit
           </Button>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <BillingAddress
             default={setDefault}
             validate={option.validate}
